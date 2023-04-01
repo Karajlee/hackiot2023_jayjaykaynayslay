@@ -52,15 +52,19 @@ def main():# Create a TCP/IP socket
                 # update state
                 if state == State.OFF:
                     state = State.ON
+                    message = b'State OFF'
                 elif state == State.ON:
                     state = State.STATE_1
+                    message = b'State ON'
                 elif state == State.STATE_1:
                     state = State.STATE_2
+                    message = b'State STATE_1'
                 elif state == State.STATE_2:
                     state = State.OFF
+                    message = b'State STATE_2'
                 
-                temp = 'State:'+ str(int(state.value))
-                message = bytes(temp, "utf-8")
+                # temp = 'State:'+ str(int(state.value))
+                # message = bytes(temp, "utf-8")
                 sock.sendall(message)
                 # sock.send(state.value)
 
