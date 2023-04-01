@@ -59,7 +59,7 @@ def main():# Create a TCP/IP socket
                 elif state == State.STATE_2:
                     state = State.OFF
                 
-                temp = 'State:'+ str(state)
+                temp = 'State:'+ str(state.value)
                 message = bytes(temp, "utf-8")
 
                 while(GPIO.input(10)==GPIO.HIGH):
