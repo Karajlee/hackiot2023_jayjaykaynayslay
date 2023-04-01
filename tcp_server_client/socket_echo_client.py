@@ -1,6 +1,7 @@
 # Reference: https://pymotw.com/3/socket/tcp.html
 # socket_echo_client.py
 import RPi.GPIO as GPIO
+from enum import Enum
 import socket
 import sys
 
@@ -27,7 +28,7 @@ def main():# Create a TCP/IP socket
         STATE_1 = 3
         STATE_2 = 4
     state = State.OFF
-    
+
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
     # Connect the socket to the port where the server is listening
