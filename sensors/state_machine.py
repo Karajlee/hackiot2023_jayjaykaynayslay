@@ -1,5 +1,6 @@
-import RPI.GPIO as GPIO
+import RPi.GPIO as GPIO
 from enum import Enum, auto
+import time
 
 GPIO.setwarnings(False) 
 GPIO.setmode(GPIO.BOARD) 
@@ -28,6 +29,9 @@ while True:
             state = State.OFF
         
         print("State:", state)
+
+        while(GPIO.input(10)==GPIO.HIGH):
+            time.sleep(15/1000)
 
 
         
