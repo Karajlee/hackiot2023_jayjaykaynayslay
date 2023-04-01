@@ -62,14 +62,15 @@ def main():# Create a TCP/IP socket
                 # temp = 'State:'+ str(state.value)
                 # message = bytes(temp, "utf-8")
                 sock.sendall(b'State: ')
-                sock.sendall(state.value)
+                sock.send(state.value)
 
                 while(GPIO.input(10)==GPIO.HIGH):
                     time.sleep(15/1000)
 
                 # Look for the response
                 amount_received = 0
-                amount_expected = len(message)
+                #amount_expected = len(message)
+                amount_expected = 0
 
                 while amount_received < amount_expected:
                     data = sock.recv(16)
