@@ -59,10 +59,10 @@ def main():# Create a TCP/IP socket
                 elif state == State.STATE_2:
                     state = State.OFF
                 
-                # temp = 'State:'+ str(state.value)
-                # message = bytes(temp, "utf-8")
-                sock.sendall(b'State: ')
-                sock.send(state.value)
+                temp = 'State:'+ str(int(state.value))
+                message = bytes(temp, "utf-8")
+                sock.sendall(message)
+                # sock.send(state.value)
 
                 while(GPIO.input(10)==GPIO.HIGH):
                     time.sleep(15/1000)
