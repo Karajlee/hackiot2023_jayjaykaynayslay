@@ -15,6 +15,10 @@ def readMessage(message, sock):
         print('received ')
 
 def main():# Create a TCP/IP socket
+    GPIO.setwarnings(False) 
+    GPIO.setmode(GPIO.BOARD) 
+    GPIO.setup(10, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+    
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
     # Connect the socket to the port where the server is listening
