@@ -8,7 +8,7 @@ import sys
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 # Connect the socket to the port where the server is listening
-server_address = ('localhost', 12345)
+server_address = ('172.20.10.7', 12345)
 print('connecting to {} port {}'.format(*server_address))
 sock.connect(server_address)
 
