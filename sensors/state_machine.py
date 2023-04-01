@@ -1,5 +1,5 @@
 import RPi.GPIO as GPIO
-from enum import Enum, auto
+from enum import Enum
 import time
 
 GPIO.setwarnings(False) 
@@ -8,10 +8,10 @@ GPIO.setup(10, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
 # initialize state
 class State(Enum):
-    OFF = auto()
-    ON = auto()
-    STATE_1 = auto()
-    STATE_2 = auto()
+    OFF = 1
+    ON = 2
+    STATE_1 = 3
+    STATE_2 = 4
 state = State.OFF
 
 while True: 
