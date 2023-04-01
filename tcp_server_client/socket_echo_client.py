@@ -18,6 +18,15 @@ def main():# Create a TCP/IP socket
     GPIO.setwarnings(False) 
     GPIO.setmode(GPIO.BOARD) 
     GPIO.setup(10, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+
+
+    # initialize state
+    class State(Enum):
+        OFF = 1
+        ON = 2
+        STATE_1 = 3
+        STATE_2 = 4
+    state = State.OFF
     
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
