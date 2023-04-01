@@ -1,6 +1,6 @@
 # Reference: https://pymotw.com/3/socket/tcp.html
 # socket_echo_client.py
-
+import RPi.GPIO as GPIO
 import socket
 import sys
 
