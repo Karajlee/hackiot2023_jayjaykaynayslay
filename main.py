@@ -211,8 +211,8 @@ def read_from_client(socket, address):
             total_cols = int(sensor_data[1])
             print(total_cols)
             # m.acquire()
-            if total_cols != 7:
-                blocks_filled = total_cols * 2
+            if total_cols != 96:
+                blocks_filled = total_cols * 2 / 96 * 7
                 blocks_empty = 16 - blocks_filled
 
                 block_line = ('X' * blocks_filled) + (' ' * blocks_empty)
@@ -450,8 +450,8 @@ def write_to_client(socket):
         if(value>96 and channel==0):
             value=96
 
-        if (channel == 0):
-            value=int(value * 7 / 96)
+        # if (channel == 0):
+        #     value=int(value * 7 / 96)
 
         if (channel == 1):
             value/=2
