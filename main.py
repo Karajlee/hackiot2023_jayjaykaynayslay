@@ -167,6 +167,8 @@ def read_from_client(socket, address):
 
         if(sensor_data[0]=="P"):
             pwm.ChangeDutyCycle(int(sensor_data[1]))
+        elif(sensor_data[0]=="R"):
+            print(sensor_data[1])
 
     # global state
     # state = State.OFF
@@ -236,7 +238,7 @@ def write_to_client(socket):
 
         if state == State.SEND_MSG:
             msg_str = "R "+value_str
-            socket.sendall(msg_str.encode())
+            socket.sendall(msg_str.encode('utf-8'))
             # state = State.SEND_PRESSURE
         elif state == State.SEND_PRESSURE:
             # msg = b'P 001'
