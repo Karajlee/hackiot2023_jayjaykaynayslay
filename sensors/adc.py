@@ -1,8 +1,17 @@
 import spidev
+import RPi.GPIO as GPIO
+from enum import Enum
+import time
 
 spi = spidev.SpiDev()
 spi.open(0, 0)  # open SPI bus 0, device 0
 spi.max_speed_hz = 1000000  # set SPI clock speed
+
+channel = 0
+
+GPIO.setwarnings(False) 
+GPIO.setmode(GPIO.BOARD) 
+GPIO.setup(10, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
 def read_adc(channel):
     # MCP3008 expects 3 bytes: start bit, single-ended/differential bit, and channel selection bits
@@ -13,5 +22,20 @@ def read_adc(channel):
     return adc
 
 while True:
-    value = read_adc(0)  # read from channel 0
+    if GPIO.input(10) == GPIO.HIGH:
+        print("Button was pushed!")
+
+        # update state
+        if channel == 0:
+            channel = 1
+        else:
+            channel = 0
+        
+        print("Channel:", channel)
+
+        while(GPIO.input(10)==GPIO.HIGH):
+            time.sleep(15/1000)
+    
+    value = read_adc(channel)  # read from channel 0
     print("ADC value:", value)
+    time.sleep(.5)
