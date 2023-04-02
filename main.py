@@ -392,6 +392,7 @@ def read_from_client(socket, address):
                 lcd.message('Peace Love Code')
                 print("lcd done print")
             # m.release()
+            time.sleep(0.5)
 
     # global state
     # state = State.OFF
