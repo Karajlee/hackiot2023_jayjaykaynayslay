@@ -57,7 +57,7 @@ lcd.set_cursor(0, 1)
 lcd.message("Peace Love Code")
 
 # Peace
-peaceL = {
+peaceL = (
     0b00000,
     0b00000,
     0b00001,
@@ -66,8 +66,8 @@ peaceL = {
     0b00001,
     0b00000,
     0b00000,
-}
-peaceM = {
+)
+peaceM = (
     0b01110,
     0b10101,
     0b00100,
@@ -76,8 +76,8 @@ peaceM = {
     0b01010,
     0b10001,
     0b01110,
-}
-peaceR = {
+)
+peaceR = (
     0b00000,
     0b00000,
     0b10000,
@@ -86,7 +86,7 @@ peaceR = {
     0b10000,
     0b00000,
     0b00000,
-}
+)
 lcd.set_cursor(1, 0)
 lcd.create_char(0, peaceL)
 lcd.write_string(unichr(0))
@@ -96,7 +96,7 @@ lcd.create_char(2, peaceR)
 lcd.write_string(unichr(2))
 
 # Heart
-heartL = {
+heartL = (
     0b00110,
     0b01111,
     0b11111,
@@ -105,8 +105,8 @@ heartL = {
     0b00111,
     0b00011,
     0b00001,
-}
-heartR = {
+)
+heartR = (
     0b01100,
     0b11110,
     0b11111,
@@ -115,7 +115,7 @@ heartR = {
     0b11100,
     0b11000,
     0b10000,
-}
+)
 lcd.set_cursor(7, 0)
 lcd.create_char(3, heartL)
 lcd.write_string(unichr(3))
@@ -123,7 +123,7 @@ lcd.create_char(4, heartR)
 lcd.write_string(unichr(4))
 
 # Code
-codeL = {
+codeL = (
     0b00010,
     0b00100,
     0b01000,
@@ -132,8 +132,8 @@ codeL = {
     0b00100,
     0b00010,
     0b00000,
-}
-codeR = {
+)
+codeR = (
     0b01000,
     0b00100,
     0b00010,
@@ -142,7 +142,7 @@ codeR = {
     0b00100,
     0b01000,
     0b00000,
-}
+)
 lcd.set_cursor(12, 0)
 lcd.create_char(5, codeL)
 lcd.write_string(unichr(5))
