@@ -210,7 +210,119 @@ def read_from_client(socket, address):
             print(total_cols)
             if total_cols != 7:
                 print("Total cols != 7")
-                # Filled square
+
+                lcd.clear()
+                print("Total cols = 7")
+                # PEACE
+                peaceL = [
+                    0b00000,
+                    0b00000,
+                    0b00001,
+                    0b00001,
+                    0b00001,
+                    0b00001,
+                    0b00000,
+                    0b00000,
+                ]
+                peaceM = [
+                    0b01110,
+                    0b10101,
+                    0b00100,
+                    0b00100,
+                    0b00100,
+                    0b01010,
+                    0b10001,
+                    0b01110,
+                ]
+                peaceR = [
+                    0b00000,
+                    0b00000,
+                    0b10000,
+                    0b10000,
+                    0b10000,
+                    0b10000,
+                    0b00000,
+                    0b00000,
+                ]
+                # Load custom characters into LCD memory
+                lcd.create_char(0, peaceL)
+                lcd.create_char(1, peaceM)
+                lcd.create_char(2, peaceR)
+                # Display custom characters using message()
+                lcd.message('\n')
+                lcd.set_cursor(1, 0)
+                lcd.message('\x00')  # Display heart character
+                lcd.message('\x01')  # Display smiley character
+                lcd.message('\x02')  # Display smiley character
+
+
+                # HEART
+                heartL = (
+                    0b00110,
+                    0b01111,
+                    0b11111,
+                    0b11111,
+                    0b01111,
+                    0b00111,
+                    0b00011,
+                    0b00001,
+                )
+                heartR = (
+                    0b01100,
+                    0b11110,
+                    0b11111,
+                    0b11111,
+                    0b11110,
+                    0b11100,
+                    0b11000,
+                    0b10000,
+                )
+                # Load custom characters into LCD memory
+                lcd.create_char(3, heartL)
+                lcd.create_char(4, heartR)
+                # Display custom characters using message()
+                lcd.message('\n')
+                lcd.set_cursor(7, 0)
+                lcd.message('\x03')  # Display heart character
+                lcd.message('\x04')  # Display smiley character
+
+
+                # CODE
+                codeL = (
+                    0b00010,
+                    0b00100,
+                    0b01000,
+                    0b10000,
+                    0b01000,
+                    0b00100,
+                    0b00010,
+                    0b00000,
+                )
+                codeR = (
+                    0b01000,
+                    0b00100,
+                    0b00010,
+                    0b00001,
+                    0b00010,
+                    0b00100,
+                    0b01000,
+                    0b00000,
+                )
+                # Load custom characters into LCD memory
+                lcd.create_char(5, codeL)
+                lcd.create_char(6, codeR)
+                # Display custom characters using message()
+                lcd.message('\n')
+                lcd.set_cursor(12, 0)
+                lcd.message('\x05')  # Display heart character
+                lcd.message('\x06')  # Display smiley character
+
+
+                # PEACE LOVE CODE
+                lcd.set_cursor(0, 1)
+                lcd.message('Peace Love CodE')
+                print("lcd done print")
+                # # Filled square
                 # fill = [
                 #     0b11111,
                 #     0b11111,
@@ -221,19 +333,19 @@ def read_from_client(socket, address):
                 #     0b11111,
                 #     0b11111,
                 # ]
-                # Empty square
-                empty = [
-                    0b00000,
-                    0b00000,
-                    0b00000,
-                    0b00000,
-                    0b00000,
-                    0b00000,
-                    0b00000,
-                    0b00000,
-                ]
+                # # Empty square
+                # empty = [
+                #     0b00000,
+                #     0b00000,
+                #     0b00000,
+                #     0b00000,
+                #     0b00000,
+                #     0b00000,
+                #     0b00000,
+                #     0b00000,
+                # ]
                 # lcd.create_char(0, fill)
-                lcd.create_char(7, empty)
+                # lcd.create_char(7, empty)
 
 
                 # max_col = 2 * total_cols
