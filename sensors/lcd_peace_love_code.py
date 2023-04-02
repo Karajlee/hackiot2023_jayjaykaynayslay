@@ -88,6 +88,7 @@ peaceR = (
     0b00000,
     0b00000,
 )
+print(type(peaceL))
 lcd.set_cursor(1, 0)
 lcd.write8(peaceL)
 lcd.write8(peaceM)
