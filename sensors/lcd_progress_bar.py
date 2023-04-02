@@ -27,7 +27,7 @@ GPIO.setup(12, GPIO.OUT)  # LED
 GPIO.output(12, GPIO.LOW) # OFF
 # GPIO Pins for LCD and Backlight
 
-GPIO.setup(37, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+GPIO.setup(26, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
 lcd_rs = 25
 lcd_en = 24
@@ -67,169 +67,169 @@ lcd_rows = 2
 lcd = LCD.Adafruit_CharLCD(lcd_rs, lcd_en, lcd_d4, lcd_d5, lcd_d6, lcd_d7,
                            lcd_columns, lcd_rows, lcd_backlight)
 
-# Initialize squares
-fill = (
-    0b11111,
-    0b11111,
-    0b11111,
-    0b11111,
-    0b11111,
-    0b11111,
-    0b11111,
-    0b11111,
-)
-empty = (
-    0b00000,
-    0b00000,
-    0b00000,
-    0b00000,
-    0b00000,
-    0b00000,
-    0b00000,
-    0b00000,
-)
-lcd.create_char(0, fill)
-lcd.create_char(7, empty)
+# # Initialize squares
+# fill = (
+#     0b11111,
+#     0b11111,
+#     0b11111,
+#     0b11111,
+#     0b11111,
+#     0b11111,
+#     0b11111,
+#     0b11111,
+# )
+# empty = (
+#     0b00000,
+#     0b00000,
+#     0b00000,
+#     0b00000,
+#     0b00000,
+#     0b00000,
+#     0b00000,
+#     0b00000,
+# )
+# lcd.create_char(0, fill)
+# lcd.create_char(7, empty)
 
-# Fill squares
-col = 0
-while (col != 16):
-    # Load custom characters into LCD memory
-    # Display custom characters using message()
-    lcd.message('\n')
-    lcd.set_cursor(col, 0)
-    lcd.message('\x00')
-    lcd.set_cursor(col+1, 0)
-    lcd.message('\x00')
-    lcd.set_cursor(col, 1)
-    lcd.message('\x00')
-    lcd.set_cursor(col+1, 1)
-    lcd.message('\x00')
+# # Fill squares
+# col = 0
+# while (col != 16):
+#     # Load custom characters into LCD memory
+#     # Display custom characters using message()
+#     lcd.message('\n')
+#     lcd.set_cursor(col, 0)
+#     lcd.message('\x00')
+#     lcd.set_cursor(col+1, 0)
+#     lcd.message('\x00')
+#     lcd.set_cursor(col, 1)
+#     lcd.message('\x00')
+#     lcd.set_cursor(col+1, 1)
+#     lcd.message('\x00')
 
-    col += 2
-    time.sleep(0.3)
+#     col += 2
+#     time.sleep(0.3)
 
-# Empty squares
-col = 14
-while (col >= 0):
-    # Load custom characters into LCD memory
-    # Display custom characters using message()
-    lcd.message('\n')
-    lcd.set_cursor(col, 0)
-    lcd.message('\x07')
-    lcd.set_cursor(col+1, 0)
-    lcd.message('\x07')
-    lcd.set_cursor(col, 1)
-    lcd.message('\x07')
-    lcd.set_cursor(col+1, 1)
-    lcd.message('\x07')
+# # Empty squares
+# col = 14
+# while (col >= 0):
+#     # Load custom characters into LCD memory
+#     # Display custom characters using message()
+#     lcd.message('\n')
+#     lcd.set_cursor(col, 0)
+#     lcd.message('\x07')
+#     lcd.set_cursor(col+1, 0)
+#     lcd.message('\x07')
+#     lcd.set_cursor(col, 1)
+#     lcd.message('\x07')
+#     lcd.set_cursor(col+1, 1)
+#     lcd.message('\x07')
 
-    col -= 2
-    time.sleep(0.15)
+#     col -= 2
+#     time.sleep(0.15)
 
-# PEACE
-peaceL = [
-    0b00000,
-    0b00000,
-    0b00001,
-    0b00001,
-    0b00001,
-    0b00001,
-    0b00000,
-    0b00000,
-]
-peaceM = [
-    0b01110,
-    0b10101,
-    0b00100,
-    0b00100,
-    0b00100,
-    0b01010,
-    0b10001,
-    0b01110,
-]
-peaceR = [
-    0b00000,
-    0b00000,
-    0b10000,
-    0b10000,
-    0b10000,
-    0b10000,
-    0b00000,
-    0b00000,
-]
-# Load custom characters into LCD memory
-lcd.create_char(0, peaceL)
-lcd.create_char(1, peaceM)
-lcd.create_char(2, peaceR)
-# Display custom characters using message()
-lcd.message('\n')
-lcd.set_cursor(1, 0)
-lcd.message('\x00')  # Display heart character
-lcd.message('\x01')  # Display smiley character
-lcd.message('\x02')  # Display smiley character
-
-
-# HEART
-heartL = (
-    0b00110,
-    0b01111,
-    0b11111,
-    0b11111,
-    0b01111,
-    0b00111,
-    0b00011,
-    0b00001,
-)
-heartR = (
-    0b01100,
-    0b11110,
-    0b11111,
-    0b11111,
-    0b11110,
-    0b11100,
-    0b11000,
-    0b10000,
-)
-# Load custom characters into LCD memory
-lcd.create_char(3, heartL)
-lcd.create_char(4, heartR)
-# Display custom characters using message()
-lcd.message('\n')
-lcd.set_cursor(7, 0)
-lcd.message('\x03')  # Display heart character
-lcd.message('\x04')  # Display smiley character
+# # PEACE
+# peaceL = [
+#     0b00000,
+#     0b00000,
+#     0b00001,
+#     0b00001,
+#     0b00001,
+#     0b00001,
+#     0b00000,
+#     0b00000,
+# ]
+# peaceM = [
+#     0b01110,
+#     0b10101,
+#     0b00100,
+#     0b00100,
+#     0b00100,
+#     0b01010,
+#     0b10001,
+#     0b01110,
+# ]
+# peaceR = [
+#     0b00000,
+#     0b00000,
+#     0b10000,
+#     0b10000,
+#     0b10000,
+#     0b10000,
+#     0b00000,
+#     0b00000,
+# ]
+# # Load custom characters into LCD memory
+# lcd.create_char(0, peaceL)
+# lcd.create_char(1, peaceM)
+# lcd.create_char(2, peaceR)
+# # Display custom characters using message()
+# lcd.message('\n')
+# lcd.set_cursor(1, 0)
+# lcd.message('\x00')  # Display heart character
+# lcd.message('\x01')  # Display smiley character
+# lcd.message('\x02')  # Display smiley character
 
 
-# CODE
-codeL = (
-    0b00010,
-    0b00100,
-    0b01000,
-    0b10000,
-    0b01000,
-    0b00100,
-    0b00010,
-    0b00000,
-)
-codeR = (
-    0b01000,
-    0b00100,
-    0b00010,
-    0b00001,
-    0b00010,
-    0b00100,
-    0b01000,
-    0b00000,
-)
-# Load custom characters into LCD memory
-lcd.create_char(5, codeL)
-lcd.create_char(6, codeR)
-# Display custom characters using message()
-lcd.message('\n')
-lcd.set_cursor(12, 0)
-lcd.message('\x05')  # Display heart character
-lcd.message('\x06')  # Display smiley character
+# # HEART
+# heartL = (
+#     0b00110,
+#     0b01111,
+#     0b11111,
+#     0b11111,
+#     0b01111,
+#     0b00111,
+#     0b00011,
+#     0b00001,
+# )
+# heartR = (
+#     0b01100,
+#     0b11110,
+#     0b11111,
+#     0b11111,
+#     0b11110,
+#     0b11100,
+#     0b11000,
+#     0b10000,
+# )
+# # Load custom characters into LCD memory
+# lcd.create_char(3, heartL)
+# lcd.create_char(4, heartR)
+# # Display custom characters using message()
+# lcd.message('\n')
+# lcd.set_cursor(7, 0)
+# lcd.message('\x03')  # Display heart character
+# lcd.message('\x04')  # Display smiley character
+
+
+# # CODE
+# codeL = (
+#     0b00010,
+#     0b00100,
+#     0b01000,
+#     0b10000,
+#     0b01000,
+#     0b00100,
+#     0b00010,
+#     0b00000,
+# )
+# codeR = (
+#     0b01000,
+#     0b00100,
+#     0b00010,
+#     0b00001,
+#     0b00010,
+#     0b00100,
+#     0b01000,
+#     0b00000,
+# )
+# # Load custom characters into LCD memory
+# lcd.create_char(5, codeL)
+# lcd.create_char(6, codeR)
+# # Display custom characters using message()
+# lcd.message('\n')
+# lcd.set_cursor(12, 0)
+# lcd.message('\x05')  # Display heart character
+# lcd.message('\x06')  # Display smiley character
 
 
 # PEACE LOVE CODE
@@ -237,7 +237,7 @@ lcd.set_cursor(0, 1)
 lcd.message('Peace Love Code')
 
 while True:
-    if GPIO.input(37) == GPIO.HIGH:
+    if GPIO.input(26) == GPIO.HIGH:
         print("Button was pushed!")
 
         # update state
@@ -248,7 +248,7 @@ while True:
         
         print("Channel:", channel)
 
-        while(GPIO.input(37)==GPIO.HIGH):
+        while(GPIO.input(26)==GPIO.HIGH):
             time.sleep(15/1000)
     
     value = read_adc(channel)  # read from channel 0
