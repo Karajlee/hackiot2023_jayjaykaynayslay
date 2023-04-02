@@ -61,9 +61,16 @@ fill = (
     0b11111,
     0b11111,
 )
-# Load custom characters into LCD memory
-lcd.create_char(0, fill)
-# Display custom characters using message()
-lcd.message('\n')
-lcd.set_cursor(0, 0)
-lcd.message('\x00')
+
+col = 0
+while (col != 16):
+    # Load custom characters into LCD memory
+    lcd.create_char(0, fill)
+    # Display custom characters using message()
+    lcd.message('\n')
+    lcd.set_cursor(col, 0)
+    lcd.message('\x00')
+
+    time.sleep(1)
+    
+    col += 2
