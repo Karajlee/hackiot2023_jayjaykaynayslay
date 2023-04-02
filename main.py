@@ -248,7 +248,7 @@ def read_from_client(socket, address):
                     lcd.message('\x00')
 
                     col += 2
-                    time.sleep(0.3)
+                    # time.sleep(0.3)
 
                 col = max_col
                 while (col >= 0):
@@ -265,7 +265,7 @@ def read_from_client(socket, address):
                     lcd.message('\x07')
 
                     col -= 2
-                    time.sleep(0.15)
+                    # time.sleep(0.15)
                 
                 total_cols += 1
 
