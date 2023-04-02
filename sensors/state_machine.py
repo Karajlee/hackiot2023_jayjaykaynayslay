@@ -56,7 +56,7 @@ while True:
         elif state == State.STATE_2:
             state = State.OFF
             GPIO.output(12, GPIO.LOW)
-            GPIO.output(11, GPIO.LOW)
+            # GPIO.output(11, GPIO.LOW)
         
         print("State:", state)
 
