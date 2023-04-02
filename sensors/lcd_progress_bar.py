@@ -139,17 +139,16 @@ while True:
 
         while(GPIO.input(26)==GPIO.HIGH):
             time.sleep(15/1000)
-    break
     
-    # value = read_adc(channel)  # read from channel 0
-    # block_value = int(value * 7 / 96)
-    # print(value, ' ', block_value)
+    value = read_adc(channel)  # read from channel 0
+    block_value = int(value * 7 / 96)
+    print(value, ' ', block_value)
 
-    # time.sleep(.5)
+    time.sleep(.5)
 
-    # if block_value == 7:
-    #     break
-
+    if block_value == 7:
+        break
+print("Out of while loop")
 # PEACE
 peaceL = [
     0b00000,
@@ -258,3 +257,4 @@ lcd.message('\x06')  # Display smiley character
 # PEACE LOVE CODE
 lcd.set_cursor(0, 1)
 lcd.message('Peace Love Code')
+print("lcd done print")
