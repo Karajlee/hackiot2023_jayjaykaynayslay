@@ -208,7 +208,8 @@ def read_from_client(socket, address):
             pwm.ChangeDutyCycle(int(sensor_data[1]))
         elif(sensor_data[0]=="R"):
             print(sensor_data[1])
-            lcd.message(sensor_data[1])
+            lcd_msg = "Sending... " + int(sensor_data[1] / 7 * 100) + "%!"
+            lcd.message(lcd_msg)
 
 
 
