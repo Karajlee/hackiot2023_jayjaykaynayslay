@@ -58,7 +58,7 @@ lcd.set_cursor(0, 1)
 lcd.message("Peace Love Code")
 
 # Peace
-peaceL = (
+peaceL = bytearray([
     0b00000,
     0b00000,
     0b00001,
@@ -66,9 +66,9 @@ peaceL = (
     0b00001,
     0b00001,
     0b00000,
-    0b00000,
-)
-peaceM = (
+    0b00000
+])
+peaceM = bytearray([
     0b01110,
     0b10101,
     0b00100,
@@ -77,8 +77,8 @@ peaceM = (
     0b01010,
     0b10001,
     0b01110,
-)
-peaceR = (
+])
+peaceR = bytearray([
     0b00000,
     0b00000,
     0b10000,
@@ -87,14 +87,14 @@ peaceR = (
     0b10000,
     0b00000,
     0b00000,
-)
+])
 lcd.set_cursor(1, 0)
 lcd.create_char(0, peaceL)
 lcd.create_char(1, peaceM)
 lcd.create_char(2, peaceR)
+lcd.message('\x00')
 lcd.message('\x01')
 lcd.message('\x02')
-lcd.message('\x03')
 
 # # Heart
 # heartL = (
