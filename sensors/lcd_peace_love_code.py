@@ -54,13 +54,14 @@ lcd.clear()
 
 # Heart
 heart = {
-0b00000,
-0b01010,
-0b11111,
-0b11111,
-0b01110,
-0b00100,
-0b00000,
-0b00000
+    0b00000,
+    0b01010,
+    0b11111,
+    0b11111,
+    0b01110,
+    0b00100,
+    0b00000,
+    0b00000
 }
-lcd.message(heart)
+lcd.create_char(0, heart)
+lcd.write_string(unichr(0))
