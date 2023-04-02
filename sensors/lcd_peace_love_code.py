@@ -89,6 +89,7 @@ lcd.create_char(2, peaceR)
 
 # Display custom characters using message()
 lcd.message('\n')
+lcd.set_cursor(1, 0)
 lcd.message('\x00')  # Display heart character
 lcd.message('\x01')  # Display smiley character
 lcd.message('\x02')  # Display smiley character
