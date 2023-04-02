@@ -51,7 +51,7 @@ lcd = LCD.Adafruit_CharLCD(lcd_rs, lcd_en, lcd_d4, lcd_d5, lcd_d6, lcd_d7,
                            lcd_columns, lcd_rows, lcd_backlight)
 
 # Define custom characters
-peaceL = [
+heart_char = [
     0b00000,
     0b00000,
     0b00001,
@@ -61,7 +61,7 @@ peaceL = [
     0b00000,
     0b00000,
 ]
-peaceM = [
+smiley_char = [
     0b01110,
     0b10101,
     0b00100,
@@ -71,26 +71,14 @@ peaceM = [
     0b10001,
     0b01110,
 ]
-peaceR = [
-    0b00000,
-    0b00000,
-    0b10000,
-    0b10000,
-    0b10000,
-    0b10000,
-    0b00000,
-    0b00000,
-]
 
 # Load custom characters into LCD memory
-lcd.create_char(0, peaceL)
-lcd.create_char(1, peaceM)
-lcd.create_char(2, peaceR)
+lcd.create_char(0, heart_char)
+lcd.create_char(1, smiley_char)
 
 # Display custom characters using message()
-lcd.message('\x00')
-lcd.message('\x01')
-lcd.message('\x01')
+lcd.message('\x00')  # Display heart character
+lcd.message('\x01')  # Display smiley character
 
 # lcd.clear()
 
@@ -99,43 +87,43 @@ lcd.message('\x01')
 # lcd.message("Peace Love Code")
 
 # Peace
-# peaceL = bytearray([
-#     0b00000,
-#     0b00000,
-#     0b00001,
-#     0b00001,
-#     0b00001,
-#     0b00001,
-#     0b00000,
-#     0b00000,
-# ])
-# peaceM = bytearray([
-#     0b01110,
-#     0b10101,
-#     0b00100,
-#     0b00100,
-#     0b00100,
-#     0b01010,
-#     0b10001,
-#     0b01110,
-# ])
-# peaceR = bytearray([
-#     0b00000,
-#     0b00000,
-#     0b10000,
-#     0b10000,
-#     0b10000,
-#     0b10000,
-#     0b00000,
-#     0b00000,
-# ])
-# lcd.set_cursor(1, 0)
-# lcd.create_char(0, peaceL)
-# lcd.create_char(1, peaceM)
-# lcd.create_char(2, peaceR)
-# lcd.message('\x00')
-# lcd.message('\x01')
-# lcd.message('\x02')
+peaceL = bytearray([
+    0b00000,
+    0b00000,
+    0b00001,
+    0b00001,
+    0b00001,
+    0b00001,
+    0b00000,
+    0b00000,
+])
+peaceM = bytearray([
+    0b01110,
+    0b10101,
+    0b00100,
+    0b00100,
+    0b00100,
+    0b01010,
+    0b10001,
+    0b01110,
+])
+peaceR = bytearray([
+    0b00000,
+    0b00000,
+    0b10000,
+    0b10000,
+    0b10000,
+    0b10000,
+    0b00000,
+    0b00000,
+])
+lcd.set_cursor(1, 0)
+lcd.create_char(0, peaceL)
+lcd.create_char(1, peaceM)
+lcd.create_char(2, peaceR)
+lcd.message('\x00')
+lcd.message('\x01')
+lcd.message('\x02')
 
 # # Heart
 # heartL = (
