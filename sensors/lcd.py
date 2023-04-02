@@ -18,7 +18,7 @@ lcd_d4 = 23
 lcd_d5 = 17
 lcd_d6 = 18
 lcd_d7 = 22
-lcd_backlight = 4
+lcd_backlight = 12
 
 GPIO.setup(lcd_rs, GPIO.OUT)
 GPIO.output(lcd_rs, GPIO.HIGH)
@@ -38,6 +38,8 @@ GPIO.output(lcd_d6, GPIO.HIGH)
 GPIO.setup(lcd_d7, GPIO.OUT)
 GPIO.output(lcd_d7, GPIO.HIGH)
 
+GPIO.setup(lcd_backlight, GPIO.OUT)
+GPIO.output(lcd_backlight, GPIO.HIGH)
 
 lcd_columns = 16
 lcd_rows = 2
