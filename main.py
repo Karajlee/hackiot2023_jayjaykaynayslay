@@ -166,7 +166,7 @@ def read_from_client(socket, address):
         sensor_data = data.decode('ascii').split(" ")
 
         if(sensor_data[0]=="P"):
-            pwm.ChangeDutyCycle(int(sensor_data[1])/2)
+            pwm.ChangeDutyCycle(int(sensor_data[1]))
 
     # global state
     # state = State.OFF
@@ -221,13 +221,22 @@ def write_to_client(socket):
         if(value>200 and channel==1):
             value=200
 
+        if(value>96 and channel==0):
+            value=96
+
+        if (channel == 0):
+            value=(value * 7 / 96)
+
+        if (channel == 1):
+            value/=2
+
         value_str = str(value)
         while(len(value_str)<3):
             value_str = "0"+value_str
 
         if state == State.SEND_MSG:
-            msg = b'R 001'
-            socket.sendall(msg)
+            msg_str = "R "+value_str
+            socket.sendall(msg_str.encode())
             # state = State.SEND_PRESSURE
         elif state == State.SEND_PRESSURE:
             # msg = b'P 001'
