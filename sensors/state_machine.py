@@ -51,7 +51,7 @@ while True:
             state = State.STATE_1
         elif state == State.STATE_1:
             state = State.STATE_2
-            GPIO.output(11, GPIO.HIGH)
+            # GPIO.output(11, GPIO.HIGH)
             state_2_lcd_messages()
         elif state == State.STATE_2:
             state = State.OFF
