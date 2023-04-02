@@ -171,8 +171,9 @@ def write_to_client(socket):
 
     ## Read in inputs from sensors
     while True:
+        print(state)
         # BUTTON
-        # if GPIO.input(10) == GPIO.HIGH:
+        # if GPIO.input(26) == GPIO.HIGH:
             # print("Button was pushed!")
 
             # # update state
@@ -192,7 +193,6 @@ def write_to_client(socket):
             #     time.sleep(15/1000)
 
         # RIBBON - TBD
-
         if GPIO.input(26) == GPIO.HIGH:
             print("Button was pushed!")
 
@@ -210,7 +210,7 @@ def write_to_client(socket):
                 time.sleep(15/1000)
     
         value = int(read_adc(channel))  # read from channel 0
-        print("ADC value:", value)
+        # print("ADC value:", value)
         # time.sleep(.5)
         if(value>200 and channel==1):
             value=200
