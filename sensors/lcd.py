@@ -41,15 +41,21 @@ GPIO.output(lcd_d7, GPIO.HIGH)
 GPIO.setup(lcd_backlight, GPIO.OUT)
 GPIO.output(lcd_backlight, GPIO.HIGH)
 
+# GPIO.setup(12, GPIO.OUT)
+pwm = GPIO.PWM(12, 100)
+
 lcd_columns = 16
 lcd_rows = 2
 
 lcd = LCD.Adafruit_CharLCD(lcd_rs, lcd_en, lcd_d4, lcd_d5, lcd_d6, lcd_d7,
                            lcd_columns, lcd_rows, lcd_backlight)
 
+curr = 0
+pwm.start(curr)
 
-
-while True:
+while curr <= 100:
+    pwm.ChangeDutyCycle(curr)
+    curr += 5
     # lcd.clear()
-    lcd.message("Message sent to Client")
-    print("Message sent to Client")
+    # lcd.message("Message sent to Client")
+    # print("Message sent to Client")
