@@ -208,65 +208,63 @@ def read_from_client(socket, address):
         if(sensor_data[0]=="R"):
             total_cols = int(sensor_data[1])
             print(total_cols)
-            if total_cols != 7:
-                # Filled square
-                fill = (
-                    0b11111,
-                    0b11111,
-                    0b11111,
-                    0b11111,
-                    0b11111,
-                    0b11111,
-                    0b11111,
-                    0b11111,
-                )
-                lcd.create_char(0, fill)
-                # Empty square
-                empty = (
-                    0b00000,
-                    0b00000,
-                    0b00000,
-                    0b00000,
-                    0b00000,
-                    0b00000,
-                    0b00000,
-                    0b00000,
-                )
-                lcd.create_char(7, empty)
+            # if total_cols != 7:
+            #     # Filled square
+            #     fill = (
+            #         0b11111,
+            #         0b11111,
+            #         0b11111,
+            #         0b11111,
+            #         0b11111,
+            #         0b11111,
+            #         0b11111,
+            #         0b11111,
+            #     )
+            #     lcd.create_char(0, fill)
+            #     # Empty square
+            #     empty = (
+            #         0b00000,
+            #         0b00000,
+            #         0b00000,
+            #         0b00000,
+            #         0b00000,
+            #         0b00000,
+            #         0b00000,
+            #         0b00000,
+            #     )
+            #     lcd.create_char(7, empty)
 
 
-                max_col = 2 * total_cols
-                col = 0
-                while (col != max_col):
-                    # Load custom characters into LCD memory
-                    # Display custom characters using message()
-                    lcd.message('\n')
-                    lcd.set_cursor(col, 0)
-                    lcd.message('\x00')
-                    lcd.set_cursor(col+1, 0)
-                    lcd.message('\x00')
-                    lcd.set_cursor(col, 1)
-                    lcd.message('\x00')
-                    lcd.set_cursor(col+1, 1)
-                    lcd.message('\x00')
+            #     max_col = 2 * total_cols
+            #     col = 0
+            #     while (col < max_col):
+            #         # Load custom characters into LCD memory
+            #         # Display custom characters using message()
+            #         lcd.message('\n')
+            #         lcd.set_cursor(col, 0)
+            #         lcd.message('\x00')
+            #         lcd.set_cursor(col+1, 0)
+            #         lcd.message('\x00')
+            #         lcd.set_cursor(col, 1)
+            #         lcd.message('\x00')
+            #         lcd.set_cursor(col+1, 1)
+            #         lcd.message('\x00')
 
-                    col += 2
-                    # time.sleep(0.3)
+            #         col += 2
+            #         # time.sleep(0.3)
 
-                col = max_col
-                while (col != 15):
-                    # Load custom characters into LCD memory
-                    # Display custom characters using message()
-                    lcd.message('\n')
-                    lcd.set_cursor(col, 0)
-                    lcd.message('\x07')
-                    lcd.set_cursor(col, 1)
-                    lcd.message('\x07')
+            #     col = max_col
+            #     while (col < 16):
+            #         # Load custom characters into LCD memory
+            #         # Display custom characters using message()
+            #         lcd.message('\n')
+            #         lcd.set_cursor(col, 0)
+            #         lcd.message('\x07')
+            #         lcd.set_cursor(col, 1)
+            #         lcd.message('\x07')
 
-                    col += 1
+            #         col += 1
                     # time.sleep(0.15)
-                
-                total_cols += 1
 
             else:
                 # PEACE
