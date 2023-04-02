@@ -52,4 +52,4 @@ while True:
     if(channel==1):
         pwm.ChangeDutyCycle(value/2)
     else:
-        pwm.ChangeDutyCycle(0)
+        pwm.ChangeDutyCycle(100)
