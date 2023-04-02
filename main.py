@@ -203,7 +203,7 @@ def read_from_client(socket, address):
         
         # Process data
         sensor_data = data.decode('ascii').split(" ")
-        # lcd.clear()
+        lcd.clear()
         if(sensor_data[0]=="P"):
             pwm.ChangeDutyCycle(int(sensor_data[1]))
         elif(sensor_data[0]=="R"):
