@@ -3,7 +3,7 @@ from enum import Enum
 import Adafruit_CharLCD as LCD
 
 GPIO.setwarnings(False) 
-GPIO.setmode(GPIO.BOARD) 
+# GPIO.setmode(GPIO.BOARD) 
 GPIO.setup(10, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 GPIO.setup(11, GPIO.OUT)  # Backlight
 GPIO.output(11, GPIO.LOW)
