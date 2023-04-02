@@ -89,12 +89,14 @@ peaceR = bytearray([
     0b00000,
 ])
 lcd.set_cursor(1, 0)
-lcd.create_char(0, peaceL)
-lcd.create_char(1, peaceM)
-lcd.create_char(2, peaceR)
+space_invader = bytearray([0x4,0xe,0x1f,0x15,0x1f,0xa,0x1b,0x0])
+lcd.create_char(0, space_invader)
+# lcd.create_char(0, peaceL)
+# lcd.create_char(1, peaceM)
+# lcd.create_char(2, peaceR)
 lcd.message('\x00')
-lcd.message('\x01')
-lcd.message('\x02')
+# lcd.message('\x01')
+# lcd.message('\x02')
 
 # # Heart
 # heartL = (
