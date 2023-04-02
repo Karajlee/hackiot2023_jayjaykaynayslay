@@ -1,18 +1,21 @@
-# main.py
-# TCP/IP Reference: https://pymotw.com/3/socket/tcp.html
+# Reference: https://pymotw.com/3/socket/tcp.html
+# socket_echo_server.py
 
 import sys
 import socket
 import threading
 # import RPi.GPIO as GPIO
 from enum import Enum
+import time
 
 # Button State Machine
 class State(Enum):
     OFF = 1
     ON = 2
     SEND_MSG = 3
-state = State.OFF
+    SEND_PRESSURE = 4
+
+state = State.SEND_MSG
 
 # ----------------------------- INITIALIZE -----------------------------
 def init_rpi0():
@@ -23,8 +26,8 @@ def init_rpi0():
     server_sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
     # Bind the socket to the port
-    server_address = ('172.20.10.7', SERVER_PORT)
-    # server_address = ('localhost', SERVER_PORT)   # *FOR LOCAL TESTING*
+    # server_address = ('172.20.10.7', SERVER_PORT)
+    server_address = ('localhost', SERVER_PORT)   # *FOR LOCAL TESTING*
     print('0\tstarting up on {} port {}'.format(*server_address))
     server_sock.bind(server_address)
 
@@ -45,8 +48,8 @@ def init_rpi0():
         client_sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
         # Connect the socket to the port where the server is listening
-        server_address = ('172.20.10.7', CLIENT_PORT)
-        # server_address = ('localhost', CLIENT_PORT)   # *FOR LOCAL TESTING*
+        # server_address = ('172.20.10.7', CLIENT_PORT)
+        server_address = ('localhost', CLIENT_PORT)   # *FOR LOCAL TESTING*
         print('0\tconnecting to {} port {}'.format(*server_address))
         client_sock.connect(server_address)
 
@@ -75,8 +78,8 @@ def init_rpi1():
     client_sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
     # Connect the socket to the port where the server is listening
-    server_address = ('172.20.10.7', CLIENT_PORT)
-    # server_address = ('localhost', CLIENT_PORT)   # *FOR LOCAL TESTING*
+    # server_address = ('172.20.10.7', CLIENT_PORT)
+    server_address = ('localhost', CLIENT_PORT)   # *FOR LOCAL TESTING*
     print('1\tconnecting to {} port {}'.format(*server_address))
     client_sock.connect(server_address)
 
@@ -89,8 +92,8 @@ def init_rpi1():
         server_sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
         # Bind the socket to the port
-        server_address = ('172.20.10.7', SERVER_PORT)
-        # server_address = ('localhost', SERVER_PORT)   # *FOR LOCAL TESTING*
+        # server_address = ('172.20.10.7', SERVER_PORT)
+        server_address = ('localhost', SERVER_PORT)   # *FOR LOCAL TESTING*
         print('1\tstarting up on {} port {}'.format(*server_address))
         server_sock.bind(server_address)
 
@@ -133,40 +136,48 @@ def read_from_client(socket, address):
 
 def write_to_client(socket):
     print("Preparing to write...")
+    global state
 
     ## Read in inputs from sensors
     while True:
         # BUTTON
-        if GPIO.input(10) == GPIO.HIGH:
-            print("Button was pushed!")
+        # if GPIO.input(10) == GPIO.HIGH:
+            # print("Button was pushed!")
 
-            # update state
-            if state == State.OFF:
-                state = State.ON
-                GPIO.output(12, GPIO.HIGH)
-            elif state == State.ON:
-                state = State.SEND_MSG
-            elif state == State.SEND_MSG:
-                state = State.OFF
-                GPIO.output(12, GPIO.LOW)
+            # # update state
+            # if state == State.OFF:
+            #     state = State.ON
+            #     GPIO.output(12, GPIO.HIGH)
+            # elif state == State.ON:
+            #     state = State.SEND_MSG
+            # elif state == State.SEND_MSG:
+            #     state = State.SEND_PRESSURE
+            # elif state == State.SEND_PRESSURE:
+            #     state = State.OFF
+            #     GPIO.output(12, GPIO.LOW)
             
-            # debouncing    
-            while(GPIO.input(10)==GPIO.HIGH):
-                time.sleep(15/1000)
+            # # debouncing    
+            # while(GPIO.input(10)==GPIO.HIGH):
+            #     time.sleep(15/1000)
 
-        # RIBBON & PRESSURE- TBD
+        # RIBBON - TBD
         if (state == State.SEND_MSG):
-            msg = b'Send a message (reading ribbon and pressure sensor data)'
+            msg = b'Ribbon 1'
             socket.sendall(msg)
+            state = State.SEND_PRESSURE
+        elif (state == State.SEND_PRESSURE):
+            msg = b'Pressure 1'
+            socket.sendall(msg)
+            state = State.OFF
 
 # ----------------------------- MAIN -----------------------------
 def main():
-    # Set initial pins and state
-    GPIO.setwarnings(False) 
-    GPIO.setmode(GPIO.BOARD) 
-    GPIO.setup(10, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
-    GPIO.setup(12, GPIO.OUT)  # LED
-    GPIO.output(12, GPIO.LOW) # OFF
+    # # Set initial pins and state
+    # GPIO.setwarnings(False) 
+    # GPIO.setmode(GPIO.BOARD) 
+    # GPIO.setup(10, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+    # GPIO.setup(12, GPIO.OUT)  # LED
+    # GPIO.output(12, GPIO.LOW) # OFF
 
     # Check for valid num of args
     if len(sys.argv) != 2:
