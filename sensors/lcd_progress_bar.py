@@ -127,32 +127,32 @@ while (col >= 0):
     col -= 2
     time.sleep(0.15)
 
-while True:
-    if GPIO.input(26) == GPIO.HIGH:
-        print("Button was pushed!")
+# while True:
+#     if GPIO.input(26) == GPIO.HIGH:
+#         print("Button was pushed!")
 
-        # update state
-        if channel == 0:
-            channel = 1
-        else:
-            channel = 0
+#         # update state
+#         if channel == 0:
+#             channel = 1
+#         else:
+#             channel = 0
         
-        print("Channel:", channel)
+#         print("Channel:", channel)
 
-        while(GPIO.input(26)==GPIO.HIGH):
-            time.sleep(15/1000)
+#         while(GPIO.input(26)==GPIO.HIGH):
+#             time.sleep(15/1000)
     
-    value = read_adc(channel)  # read from channel 0
+#     value = read_adc(channel)  # read from channel 0
 
-    # process value
-    value = min(value, 96)
-    load_bar = int(value * 7 / 96)
-    print(value, ' ', load_bar)
+#     # process value
+#     value = min(value, 96)
+#     load_bar = int(value * 7 / 96)
+#     print(value, ' ', load_bar)
 
-    if (load_bar == 7):
-        break
+#     if (load_bar == 7):
+#         break
 
-    time.sleep(.5)
+#     time.sleep(.5)
 
 # PEACE
 peaceL = [
