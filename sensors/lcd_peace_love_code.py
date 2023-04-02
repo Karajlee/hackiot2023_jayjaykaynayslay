@@ -156,5 +156,5 @@ lcd.message('\x06')  # Display smiley character
 
 
 # PEACE LOVE CODE
-lcd.set_cursor(0, 0)
+lcd.set_cursor(0, 1)
 lcd.message('Peace Love Code')
