@@ -253,7 +253,7 @@ def read_from_client(socket, address):
                     col += 2
                     # time.sleep(0.3)
 
-                col += 1
+                col = max_col
                 while (col != 15):
                     # Load custom characters into LCD memory
                     # Display custom characters using message()
@@ -378,7 +378,7 @@ def read_from_client(socket, address):
                 lcd.set_cursor(0, 1)
                 lcd.message('Peace Love Code')
                 print("lcd done print")
-            # time.sleep(1)
+            time.sleep(1)
 
     # global state
     # state = State.OFF
