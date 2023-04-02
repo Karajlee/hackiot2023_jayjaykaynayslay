@@ -98,13 +98,13 @@ while (col >= 0):
     # Display custom characters using message()
     lcd.message('\n')
     lcd.set_cursor(col, 0)
-    lcd.message('\x01')
+    lcd.message('\x07')
     lcd.set_cursor(col+1, 0)
-    lcd.message('\x01')
+    lcd.message('\x07')
     lcd.set_cursor(col, 1)
-    lcd.message('\x01')
+    lcd.message('\x07')
     lcd.set_cursor(col+1, 1)
-    lcd.message('\x01')
+    lcd.message('\x07')
 
     col -= 2
     time.sleep(0.15)
