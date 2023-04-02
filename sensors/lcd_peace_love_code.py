@@ -43,7 +43,6 @@ GPIO.setup(lcd_backlight, GPIO.OUT)
 
 # GPIO.setup(12, GPIO.OUT)
 pwm = GPIO.PWM(lcd_backlight, 100)
-pwm.start(50)
 
 lcd_columns = 16
 lcd_rows = 2
@@ -92,9 +91,9 @@ lcd.set_cursor(1, 0)
 lcd.create_char(0, peaceL)
 lcd.create_char(1, peaceM)
 lcd.create_char(2, peaceR)
-lcd.write8(0)
-lcd.write8(1)
-lcd.write8(2)
+lcd.message('\x00')
+lcd.message('\x01')
+lcd.message('\x02')
 
 # # Heart
 # heartL = (
