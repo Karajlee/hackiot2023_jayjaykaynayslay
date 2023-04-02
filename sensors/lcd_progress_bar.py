@@ -263,6 +263,8 @@ while True:
         lcd.set_cursor(0, 1)
         lcd.message('Peace Love Code')
 
+        time.sleep(2)
+
         break
 
     time.sleep(.5)
