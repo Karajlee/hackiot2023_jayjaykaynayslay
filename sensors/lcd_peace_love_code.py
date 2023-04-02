@@ -93,7 +93,7 @@ lcd.message('\x01')  # Display smiley character
 lcd.message('\x02')  # Display smiley character
 
 
-# Heart
+# HEART
 heartL = (
     0b00110,
     0b01111,
@@ -123,7 +123,8 @@ lcd.set_cursor(7, 0)
 lcd.message('\x03')  # Display heart character
 lcd.message('\x04')  # Display smiley character
 
-# Code
+
+# CODE
 codeL = (
     0b00010,
     0b00100,
@@ -152,3 +153,8 @@ lcd.message('\n')
 lcd.set_cursor(12, 0)
 lcd.message('\x05')  # Display heart character
 lcd.message('\x06')  # Display smiley character
+
+
+# PEACE LOVE CODE
+lcd.set_cursor(0, 0)
+lcd.message('Peace Love Code')
