@@ -430,6 +430,7 @@ def write_to_client(socket):
         value = int(read_adc(channel))  # read from channel 0
         # print("ADC value:", value)
         # time.sleep(.5)
+        print(value)
         if(value>200 and channel==1):
             value=200
 
@@ -448,7 +449,6 @@ def write_to_client(socket):
 
         if state == State.SEND_MSG:
             msg_str = "R "+value_str
-            print(value, ' | ', msg_str)
             socket.sendall(msg_str.encode('utf-8'))
             # state = State.SEND_PRESSURE
         elif state == State.SEND_PRESSURE:
