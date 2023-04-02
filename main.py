@@ -6,6 +6,7 @@ import sys
 import socket
 import threading
 import RPi.GPIO as GPIO
+import Adafruit_CharLCD as LCD
 from enum import Enum
 import time
 
@@ -16,6 +17,9 @@ spi.max_speed_hz = 1000000  # set SPI clock speed
 
 channel = 0
 
+pwm = GPIO.PWM(13, 100)
+pwm.start(0)
+
 # Button State Machine
 class State(Enum):
     OFF = 1
@@ -25,6 +29,8 @@ class State(Enum):
 
 state = State.SEND_MSG
 rpi_num = 0
+
+
 
 def read_adc(channel):
     # MCP3008 expects 3 bytes: start bit, single-ended/differential bit, and channel selection bits
@@ -140,6 +146,8 @@ def init_rpi1():
 
 # ----------------------------- THREADS -----------------------------
 def read_from_client(socket, address):
+    global pwm
+
     print("Preparing to read...")
 
     # state = 0 #Reading whether to process ribbon or pressure
