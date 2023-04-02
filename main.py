@@ -208,7 +208,7 @@ def write_to_client(socket):
             while(GPIO.input(26)==GPIO.HIGH):
                 time.sleep(15/1000)
     
-        value = read_adc(channel)  # read from channel 0
+        value = int(read_adc(channel))  # read from channel 0
         print("ADC value:", value)
         # time.sleep(.5)
         if(value>200 and channel==1):
@@ -225,7 +225,8 @@ def write_to_client(socket):
         elif state == State.SEND_PRESSURE:
             # msg = b'P 001'
             msg_str = "P "+value_str
-            socket.sendall(msg)
+
+            socket.sendall(msg_str.encode())
             # state = State.OFF
 
 # ----------------------------- MAIN -----------------------------
