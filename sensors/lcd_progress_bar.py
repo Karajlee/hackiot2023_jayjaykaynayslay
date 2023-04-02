@@ -70,6 +70,12 @@ while (col != 16):
     lcd.message('\n')
     lcd.set_cursor(col, 0)
     lcd.message('\x00')
+    lcd.set_cursor(col+1, 0)
+    lcd.message('\x00')
+    lcd.set_cursor(col, 1)
+    lcd.message('\x00')
+    lcd.set_cursor(col+1, 1)
+    lcd.message('\x00')
 
     time.sleep(1)
     
