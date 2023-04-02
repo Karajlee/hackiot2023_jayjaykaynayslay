@@ -430,7 +430,6 @@ def write_to_client(socket):
         value = int(read_adc(channel))  # read from channel 0
         # print("ADC value:", value)
         # time.sleep(.5)
-        print(value)
         if(value>200 and channel==1):
             value=200
 
