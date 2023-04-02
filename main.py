@@ -206,7 +206,7 @@ def read_from_client(socket, address):
             continue
 
         if(sensor_data[0]=="P"):
-            pwm.ChangeDutyCycle(int(sensor_data[1]))
+            pwm.ChangeDutyCycle(int(sensor_data[1])/2)
         if(sensor_data[0]=="R"):
             total_cols = int(sensor_data[1])
             print(total_cols)
@@ -215,10 +215,17 @@ def read_from_client(socket, address):
                 blocks_filled = total_cols * 2 / 96 * 7
                 blocks_empty = 16 - blocks_filled
 
-                block_line = ('X' * blocks_filled) + (' ' * blocks_empty)
+                block_line=""
+                for i in range(blocks_filled):
+                    block_line += 'X'
+                
+                for i in range(blocks_empty):
+                    blocks_empty +=' '
+
+                # block_line = ('X' * blocks_filled) + (' ' * blocks_empty)
                 print(block_line)
                 # lcd.set_cursor(0, 0)
-                # lcd.message(block_line)
+                lcd.message(block_line)
                 # lcd.set_cursor(0, 1)
                 # lcd.message(block_line)
 
