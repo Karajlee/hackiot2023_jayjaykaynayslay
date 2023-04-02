@@ -89,11 +89,11 @@ peaceR = (
 )
 lcd.set_cursor(1, 0)
 lcd.create_char(0, peaceL)
-lcd.write8(chr(0))
+lcd.message(chr(0))
 lcd.create_char(1, peaceM)
-lcd.write8(chr(1))
+lcd.message(chr(1))
 lcd.create_char(2, peaceR)
-lcd.write8(chr(2))
+lcd.message(chr(2))
 
 # # Heart
 # heartL = (
