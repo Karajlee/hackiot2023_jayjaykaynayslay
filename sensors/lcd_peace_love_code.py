@@ -63,4 +63,4 @@ heart = {
 0b00000,
 0b00000
 }
-lcd.message(heart)
+lcd.write(heart)
