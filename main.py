@@ -223,9 +223,8 @@ def write_to_client(socket):
         elif state == State.SEND_PRESSURE:
             # msg = b'P 001'
             msg_str = "P "+value_str
-            print(msg_str)
 
-            socket.sendall(msg_str.encode())
+            socket.sendall(msg_str.encode('utf-8'))
             # state = State.OFF
 
 # ----------------------------- MAIN -----------------------------
