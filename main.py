@@ -48,6 +48,7 @@ GPIO.setup(lcd_d7, GPIO.OUT)
 GPIO.output(lcd_d7, GPIO.HIGH)
 
 GPIO.setup(lcd_backlight, GPIO.OUT)
+pwm_backlight = GPIO.PWM(lcd_backlight, 100)
 
 lcd_columns = 16
 lcd_rows = 2
@@ -182,6 +183,7 @@ def init_rpi1():
 # ----------------------------- THREADS -----------------------------
 def read_from_client(socket, address):
     global pwm
+    global lcd
 
     print("Preparing to read...")
 
