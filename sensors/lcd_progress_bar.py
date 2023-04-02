@@ -93,7 +93,7 @@ empty = (
 )
 col = 14
 lcd.create_char(0, empty)
-while (col != 0):
+while (col >= 0):
     # Load custom characters into LCD memory
     # Display custom characters using message()
     lcd.message('\n')
@@ -105,6 +105,7 @@ while (col != 0):
     lcd.message('\x00')
     lcd.set_cursor(col+1, 1)
     lcd.message('\x00')
+    print("hi")
 
     col -= 2
     time.sleep(2)
