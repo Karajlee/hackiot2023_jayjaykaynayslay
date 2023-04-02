@@ -1,6 +1,7 @@
 import RPi.GPIO as GPIO
 from enum import Enum
 import Adafruit_CharLCD as LCD
+import time
 
 GPIO.setwarnings(False) 
 # GPIO.setmode(GPIO.BOARD) 
