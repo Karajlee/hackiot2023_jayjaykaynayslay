@@ -223,7 +223,7 @@ def write_to_client(socket):
     ## Read in inputs from sensors
     while True:
         # BUTTON
-        # if GPIO.input(26) == GPIO.HIGH:
+        # if GPIO.input(26) == GPIO.HIGH: 
             # print("Button was pushed!")
 
             # # update state
