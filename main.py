@@ -17,6 +17,7 @@ spi.max_speed_hz = 1000000  # set SPI clock speed
 
 channel = 0
 
+GPIO.setup(led_pin, GPIO.OUT)
 pwm = GPIO.PWM(13, 100)
 pwm.start(0)
 
@@ -248,7 +249,7 @@ def main():
     GPIO.setwarnings(False) 
     GPIO.setmode(GPIO.BCM) 
     GPIO.setup(button_pin, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
-    GPIO.setup(led_pin, GPIO.OUT)
+    # GPIO.setup(led_pin, GPIO.OUT)
 
     # Check for valid num of args
     if len(sys.argv) != 2:
