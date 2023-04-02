@@ -167,6 +167,7 @@ def read_from_client(socket, address):
 def write_to_client(socket):
     print("Preparing to write...")
     global state
+    global channel
 
     ## Read in inputs from sensors
     while True:
