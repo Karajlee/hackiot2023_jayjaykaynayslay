@@ -219,7 +219,7 @@ def write_to_client(socket):
     print("Preparing to write...")
     global state
     global channel
-
+    prev = ""
     ## Read in inputs from sensors
     while True:
         # BUTTON
@@ -280,13 +280,16 @@ def write_to_client(socket):
 
         if state == State.SEND_MSG:
             msg_str = "R "+value_str
-            socket.sendall(msg_str.encode('utf-8'))
+            if(msg_str!=prev):
+                prev = msg_str
+                socket.sendall(msg_str.encode('utf-8'))
             # state = State.SEND_PRESSURE
         elif state == State.SEND_PRESSURE:
             # msg = b'P 001'
             msg_str = "P "+value_str
-
-            socket.sendall(msg_str.encode('utf-8'))
+            if(msg_str!=prev):
+                prev = msg_str
+                socket.sendall(msg_str.encode('utf-8'))
             # state = State.OFF
 
 # ----------------------------- MAIN -----------------------------
