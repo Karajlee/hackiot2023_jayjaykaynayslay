@@ -210,7 +210,7 @@ def write_to_client(socket):
                 channel = 0
                 state = State.SEND_MSG
             
-            print("Channel:", channel)
+            print("Channel:", channel) 
 
             while(GPIO.input(26)==GPIO.HIGH):
                 time.sleep(15/1000)
