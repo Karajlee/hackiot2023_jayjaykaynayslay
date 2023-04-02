@@ -51,7 +51,7 @@ lcd = LCD.Adafruit_CharLCD(lcd_rs, lcd_en, lcd_d4, lcd_d5, lcd_d6, lcd_d7,
                            lcd_columns, lcd_rows, lcd_backlight)
 
 # Define custom characters
-heart_char = [
+peaceL = [
     0b00000,
     0b00000,
     0b00001,
@@ -61,7 +61,7 @@ heart_char = [
     0b00000,
     0b00000,
 ]
-smiley_char = [
+peaceM = [
     0b01110,
     0b10101,
     0b00100,
@@ -73,11 +73,11 @@ smiley_char = [
 ]
 
 # Load custom characters into LCD memory
-lcd.create_char(0, heart_char)
-lcd.create_char(1, smiley_char)
+lcd.create_char(0, peaceL)
+lcd.create_char(1, peaceM)
 
 # Display custom characters using message()
-lcd.message('Custom chars:\n')
+lcd.message('Peace Love Code\n')
 lcd.message('\x00')  # Display heart character
 lcd.message('\x01')  # Display smiley character
 
