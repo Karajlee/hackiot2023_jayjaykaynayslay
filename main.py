@@ -225,7 +225,7 @@ def write_to_client(socket):
             value=96
 
         if (channel == 0):
-            value=(value * 7 / 96)
+            value=int(value * 7 / 96)
 
         if (channel == 1):
             value/=2
