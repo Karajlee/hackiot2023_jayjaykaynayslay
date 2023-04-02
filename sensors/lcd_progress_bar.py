@@ -236,7 +236,7 @@ lcd.message('\x06')  # Display smiley character
 lcd.set_cursor(0, 1)
 lcd.message('Peace Love Code')
 
-while true:
+while True:
     if GPIO.input(37) == GPIO.HIGH:
         print("Button was pushed!")
 
