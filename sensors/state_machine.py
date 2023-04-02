@@ -4,9 +4,9 @@ import Adafruit_CharLCD as LCD
 
 GPIO.setwarnings(False) 
 # GPIO.setmode(GPIO.BOARD) 
-GPIO.setup(10, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
-GPIO.setup(11, GPIO.OUT)  # Backlight
-GPIO.output(11, GPIO.LOW)
+GPIO.setup(26, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+# GPIO.setup(11, GPIO.OUT)  # Backlight
+# GPIO.output(11, GPIO.LOW)
 GPIO.setup(12, GPIO.OUT)  # LED
 GPIO.output(12, GPIO.LOW) # OFF
 # GPIO Pins for LCD and Backlight
@@ -39,7 +39,7 @@ def state_2_lcd_messages():
     print("Message sent to Client")
 
 while True: 
-    if GPIO.input(10) == GPIO.HIGH:
+    if GPIO.input(26) == GPIO.HIGH:
         print("Button was pushed!")
 
         # update state
@@ -59,7 +59,7 @@ while True:
         
         print("State:", state)
 
-        while(GPIO.input(10)==GPIO.HIGH):
+        while(GPIO.input(26)==GPIO.HIGH):
             time.sleep(15/1000)
 
 
