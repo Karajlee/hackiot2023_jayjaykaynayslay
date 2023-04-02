@@ -200,7 +200,7 @@ def read_from_client(socket, address):
         
         # Process data
         sensor_data = data.decode('ascii').split(" ")
-        if (sensor_data[1] == ''):
+        if (sensor_data.len() != 2 or sensor_data[1] == ''):
             continue
 
         if(sensor_data[0]=="P"):
