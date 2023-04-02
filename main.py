@@ -223,7 +223,7 @@ def read_from_client(socket, address):
                 #     block_line +=' '
 
                 # block_line = ('X' * blocks_filled) + (' ' * blocks_empty)
-                print(block_line)
+                print("Hi")
                 # lcd.set_cursor(0, 0)
                 # lcd.message(block_line)
                 # lcd.set_cursor(0, 1)
