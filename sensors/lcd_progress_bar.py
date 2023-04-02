@@ -77,6 +77,34 @@ while (col != 16):
     lcd.set_cursor(col+1, 1)
     lcd.message('\x00')
 
-    time.sleep(1)
-    
     col += 2
+    time.sleep(1)
+
+# Empty square
+empty = (
+    0b00000,
+    0b00000,
+    0b00000,
+    0b00000,
+    0b00000,
+    0b00000,
+    0b00000,
+    0b00000,
+)
+col = 0
+while (col != 16):
+    # Load custom characters into LCD memory
+    lcd.create_char(0, empty)
+    # Display custom characters using message()
+    lcd.message('\n')
+    lcd.set_cursor(col, 0)
+    lcd.message('\x00')
+    lcd.set_cursor(col+1, 0)
+    lcd.message('\x00')
+    lcd.set_cursor(col, 1)
+    lcd.message('\x00')
+    lcd.set_cursor(col+1, 1)
+    lcd.message('\x00')
+
+    col += 2
+    time.sleep(0.3)
