@@ -78,7 +78,7 @@ while (col != 16):
     lcd.message('\x00')
 
     col += 2
-    time.sleep(0.5)
+    time.sleep(0.3)
 
 # Empty square
 empty = (
@@ -92,7 +92,7 @@ empty = (
     0b00000,
 )
 col = 14
-lcd.create_char(1, empty)
+lcd.create_char(7, empty)
 while (col >= 0):
     # Load custom characters into LCD memory
     # Display custom characters using message()
@@ -107,7 +107,7 @@ while (col >= 0):
     lcd.message('\x01')
 
     col -= 2
-    time.sleep(0.25)
+    time.sleep(0.15)
 
 # PEACE
 peaceL = [
