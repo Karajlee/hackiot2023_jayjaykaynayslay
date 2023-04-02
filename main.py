@@ -9,6 +9,44 @@ import RPi.GPIO as GPIO
 import Adafruit_CharLCD as LCD
 from enum import Enum
 import time
+# ----------------------------- LCD SETUP -----------------------------
+lcd_rs = 25
+lcd_en = 24
+lcd_d4 = 23
+lcd_d5 = 17
+lcd_d6 = 18
+lcd_d7 = 22
+lcd_backlight = 12
+
+GPIO.setup(lcd_rs, GPIO.OUT)
+GPIO.output(lcd_rs, GPIO.HIGH)
+
+GPIO.setup(lcd_en, GPIO.OUT)
+GPIO.output(lcd_en, GPIO.HIGH)
+
+GPIO.setup(lcd_d4, GPIO.OUT)
+GPIO.output(lcd_d4, GPIO.HIGH)
+
+GPIO.setup(lcd_d5, GPIO.OUT)
+GPIO.output(lcd_d5, GPIO.HIGH)
+
+GPIO.setup(lcd_d6, GPIO.OUT)
+GPIO.output(lcd_d6, GPIO.HIGH)
+
+GPIO.setup(lcd_d7, GPIO.OUT)
+GPIO.output(lcd_d7, GPIO.HIGH)
+
+GPIO.setup(lcd_backlight, GPIO.OUT)
+# GPIO.output(lcd_backlight, GPIO.HIGH)
+
+# GPIO.setup(12, GPIO.OUT)
+pwm1 = GPIO.PWM(lcd_backlight, 100)
+
+lcd_columns = 16
+lcd_rows = 2
+
+lcd = LCD.Adafruit_CharLCD(lcd_rs, lcd_en, lcd_d4, lcd_d5, lcd_d6, lcd_d7,
+                           lcd_columns, lcd_rows, lcd_backlight)
 
 # ----------------------------- ADC -----------------------------
 spi = spidev.SpiDev()
@@ -148,6 +186,7 @@ def init_rpi1():
 # ----------------------------- THREADS -----------------------------
 def read_from_client(socket, address):
     global pwm
+    global lcd
 
     print("Preparing to read...")
 
@@ -169,6 +208,8 @@ def read_from_client(socket, address):
             pwm.ChangeDutyCycle(int(sensor_data[1]))
         elif(sensor_data[0]=="R"):
             print(sensor_data[1])
+
+
 
     # global state
     # state = State.OFF
