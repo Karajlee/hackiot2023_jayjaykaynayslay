@@ -88,17 +88,13 @@ peaceR = (
     0b00000,
     0b00000,
 )
-print(type(peaceL))
 lcd.set_cursor(1, 0)
-lcd.write8(peaceL)
-lcd.write8(peaceM)
-lcd.write8(peaceR)
-# lcd.create_char(0, peaceL)
-# lcd.message(chr(0))
-# lcd.create_char(1, peaceM)
-# lcd.message(chr(1))
-# lcd.create_char(2, peaceR)
-# lcd.message(chr(2))
+lcd.create_char(0, peaceL)
+lcd.create_char(1, peaceM)
+lcd.create_char(2, peaceR)
+lcd.message('\x01')
+lcd.message('\x02')
+lcd.message('\x03')
 
 # # Heart
 # heartL = (
