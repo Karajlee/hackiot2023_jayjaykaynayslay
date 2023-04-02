@@ -17,7 +17,7 @@ spi.max_speed_hz = 1000000  # set SPI clock speed
 
 channel = 0
 
-GPIO.setup(led_pin, GPIO.OUT)
+GPIO.setup(13, GPIO.OUT)
 pwm = GPIO.PWM(13, 100)
 pwm.start(0)
 
