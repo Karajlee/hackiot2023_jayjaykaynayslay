@@ -71,15 +71,27 @@ peaceM = [
     0b10001,
     0b01110,
 ]
+peaceR = [
+    0b00000,
+    0b00000,
+    0b10000,
+    0b10000,
+    0b10000,
+    0b10000,
+    0b00000,
+    0b00000,
+]
 
 # Load custom characters into LCD memory
 lcd.create_char(0, peaceL)
 lcd.create_char(1, peaceM)
+lcd.create_char(2, peaceR)
 
 # Display custom characters using message()
 lcd.message('Peace Love Code\n')
 lcd.message('\x00')  # Display heart character
 lcd.message('\x01')  # Display smiley character
+lcd.message('\x02')  # Display smiley character
 
 # lcd.clear()
 
