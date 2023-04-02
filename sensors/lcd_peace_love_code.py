@@ -53,8 +53,8 @@ lcd = LCD.Adafruit_CharLCD(lcd_rs, lcd_en, lcd_d4, lcd_d5, lcd_d6, lcd_d7,
 lcd.clear()
 
 # Write words
-lcd.set_cursor(0, 1)
-lcd.message("Peace Love Code")
+# lcd.set_cursor(0, 1)
+# lcd.message("Peace Love Code")
 
 # Peace
 peaceL = bytearray([
@@ -87,7 +87,7 @@ peaceR = bytearray([
     0b00000,
     0b00000,
 ])
-lcd.set_cursor(1, 0)
+# lcd.set_cursor(1, 0)
 lcd.create_char(0, peaceL)
 lcd.create_char(1, peaceM)
 lcd.create_char(2, peaceR)
