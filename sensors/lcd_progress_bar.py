@@ -18,8 +18,7 @@ def read_adc(channel):
     adc = ((r[1] & 3) << 8) + r[2]
     return adc
 
-GPIO.setwarnings(False) 
-GPIO.setmode(GPIO.BOARD) 
+GPIO.setwarnings(False)
 # GPIO.setmode(GPIO.BOARD) 
 GPIO.setup(26, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 # GPIO.setup(11, GPIO.OUT)  # Backlight
@@ -89,10 +88,11 @@ empty = (
     0b00000,
     0b00000,
 )
+lcd.create_char(0, fill)
+lcd.create_char(7, empty)
 
 # Fill squares
 col = 0
-lcd.create_char(0, fill)
 while (col != 16):
     # Load custom characters into LCD memory
     # Display custom characters using message()
@@ -111,7 +111,6 @@ while (col != 16):
 
 # Empty squares
 col = 14
-lcd.create_char(7, empty)
 while (col >= 0):
     # Load custom characters into LCD memory
     # Display custom characters using message()
@@ -236,3 +235,22 @@ lcd.message('\x06')  # Display smiley character
 # PEACE LOVE CODE
 lcd.set_cursor(0, 1)
 lcd.message('Peace Love Code')
+
+while true:
+    if GPIO.input(37) == GPIO.HIGH:
+        print("Button was pushed!")
+
+        # update state
+        if channel == 0:
+            channel = 1
+        else:
+            channel = 0
+        
+        print("Channel:", channel)
+
+        while(GPIO.input(37)==GPIO.HIGH):
+            time.sleep(15/1000)
+    
+    value = read_adc(channel)  # read from channel 0
+    print("ADC value:", value)
+    time.sleep(.5)
