@@ -11,7 +11,7 @@ channel = 0
 
 GPIO.setwarnings(False) 
 GPIO.setmode(GPIO.BOARD) 
-GPIO.setup(10, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+GPIO.setup(37, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
 def read_adc(channel):
     # MCP3008 expects 3 bytes: start bit, single-ended/differential bit, and channel selection bits
@@ -22,7 +22,7 @@ def read_adc(channel):
     return adc
 
 while True:
-    if GPIO.input(10) == GPIO.HIGH:
+    if GPIO.input(37) == GPIO.HIGH:
         print("Button was pushed!")
 
         # update state
@@ -33,7 +33,7 @@ while True:
         
         print("Channel:", channel)
 
-        while(GPIO.input(10)==GPIO.HIGH):
+        while(GPIO.input(37)==GPIO.HIGH):
             time.sleep(15/1000)
     
     value = read_adc(channel)  # read from channel 0

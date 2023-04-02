@@ -2,8 +2,24 @@ import RPi.GPIO as GPIO
 from enum import Enum
 import Adafruit_CharLCD as LCD
 import time
+import spidev
+
+spi = spidev.SpiDev()
+spi.open(0, 0)  # open SPI bus 0, device 0
+spi.max_speed_hz = 1000000  # set SPI clock speed
+
+channel = 0
+
+def read_adc(channel):
+    # MCP3008 expects 3 bytes: start bit, single-ended/differential bit, and channel selection bits
+    # We can send 3 bytes at once using spi.xfer2()
+    r = spi.xfer2([1, (8 + channel) << 4, 0])
+    # The ADC returns 10 bits of data, but the first 2 bits are meaningless. We can discard them by taking the last 8 bits.
+    adc = ((r[1] & 3) << 8) + r[2]
+    return adc
 
 GPIO.setwarnings(False) 
+GPIO.setmode(GPIO.BOARD) 
 # GPIO.setmode(GPIO.BOARD) 
 GPIO.setup(26, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 # GPIO.setup(11, GPIO.OUT)  # Backlight
@@ -11,6 +27,8 @@ GPIO.setup(26, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 GPIO.setup(12, GPIO.OUT)  # LED
 GPIO.output(12, GPIO.LOW) # OFF
 # GPIO Pins for LCD and Backlight
+
+GPIO.setup(37, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
 lcd_rs = 25
 lcd_en = 24
@@ -50,7 +68,7 @@ lcd_rows = 2
 lcd = LCD.Adafruit_CharLCD(lcd_rs, lcd_en, lcd_d4, lcd_d5, lcd_d6, lcd_d7,
                            lcd_columns, lcd_rows, lcd_backlight)
 
-# Filled square
+# Initialize squares
 fill = (
     0b11111,
     0b11111,
@@ -61,7 +79,18 @@ fill = (
     0b11111,
     0b11111,
 )
+empty = (
+    0b00000,
+    0b00000,
+    0b00000,
+    0b00000,
+    0b00000,
+    0b00000,
+    0b00000,
+    0b00000,
+)
 
+# Fill squares
 col = 0
 lcd.create_char(0, fill)
 while (col != 16):
@@ -80,17 +109,7 @@ while (col != 16):
     col += 2
     time.sleep(0.3)
 
-# Empty square
-empty = (
-    0b00000,
-    0b00000,
-    0b00000,
-    0b00000,
-    0b00000,
-    0b00000,
-    0b00000,
-    0b00000,
-)
+# Empty squares
 col = 14
 lcd.create_char(7, empty)
 while (col >= 0):
