@@ -220,7 +220,7 @@ def read_from_client(socket, address):
                     block_line += 'X'
                 
                 for i in range(blocks_empty):
-                    blocks_line +=' '
+                    block_line +=' '
 
                 # block_line = ('X' * blocks_filled) + (' ' * blocks_empty)
                 print(block_line)
