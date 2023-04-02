@@ -88,6 +88,7 @@ peaceR = (
     0b00000,
 )
 lcd.set_cursor(1, 0)
+lcd.message("A")
 lcd.create_char(0, peaceL)
 lcd.message(chr(0))
 lcd.create_char(1, peaceM)
