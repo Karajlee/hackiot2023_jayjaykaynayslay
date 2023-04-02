@@ -53,7 +53,7 @@ spi = spidev.SpiDev()
 spi.open(0, 0)  # open SPI bus 0, device 0
 spi.max_speed_hz = 1000000  # set SPI clock speed
 
-channel = 0
+channel = 1
 
 GPIO.setup(13, GPIO.OUT)
 pwm = GPIO.PWM(13, 100)
@@ -66,7 +66,7 @@ class State(Enum):
     SEND_MSG = 3
     SEND_PRESSURE = 4
 
-state = State.SEND_MSG
+state = State.SEND_PRESSURE
 rpi_num = 0
 
 
