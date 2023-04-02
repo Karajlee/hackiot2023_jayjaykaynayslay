@@ -16,6 +16,7 @@ class State(Enum):
     SEND_PRESSURE = 4
 
 state = State.SEND_MSG
+rpi_num = 0
 
 # ----------------------------- INITIALIZE -----------------------------
 def init_rpi0():
@@ -126,12 +127,17 @@ def read_from_client(socket, address):
 
     ## Receive the data from client
     while True:
-        data = socket.recv(16)
+        data = socket.recv(5)
         print('received {!r}'.format(data))
         if not data:
             print('no data from', address)
             break
-    
+        
+        # Process data
+        sensor_data = data.decode('ascii').split(" ")
+        print(sensor_data)
+
+    global state
     state = State.OFF
 
 def write_to_client(socket):
@@ -161,12 +167,12 @@ def write_to_client(socket):
             #     time.sleep(15/1000)
 
         # RIBBON - TBD
-        if (state == State.SEND_MSG):
-            msg = b'Ribbon 1'
+        if state == State.SEND_MSG:
+            msg = b'R 001'
             socket.sendall(msg)
             state = State.SEND_PRESSURE
-        elif (state == State.SEND_PRESSURE):
-            msg = b'Pressure 1'
+        elif state == State.SEND_PRESSURE:
+            msg = b'P 001'
             socket.sendall(msg)
             state = State.OFF
 
@@ -186,6 +192,7 @@ def main():
         sys.exit()
 
     # Determine if rpi 0 or 1
+    global rpi_num
     rpi_num = int(sys.argv[1])
     if rpi_num == 0:
         init_rpi0()
