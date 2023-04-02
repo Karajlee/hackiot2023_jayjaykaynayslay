@@ -448,7 +448,7 @@ def write_to_client(socket):
 
         if state == State.SEND_MSG:
             msg_str = "R "+value_str
-            print(msg_str)
+            print(value, ' | ', msg_str)
             socket.sendall(msg_str.encode('utf-8'))
             # state = State.SEND_PRESSURE
         elif state == State.SEND_PRESSURE:
