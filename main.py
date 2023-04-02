@@ -208,8 +208,8 @@ def read_from_client(socket, address):
         if(sensor_data[0]=="R"):
             total_cols = int(sensor_data[1])
             print(total_cols)
-            if total_cols != 7:
-                print("Total cols = 7")
+            # if total_cols != 7:
+            #     print("Total cols = 7")
                 # # Filled square
                 # fill = (
                 #     0b11111,
@@ -267,8 +267,8 @@ def read_from_client(socket, address):
             #         col += 1
                     # time.sleep(0.15)
 
-            else:
-                print("Total cols != 7")
+            # else:
+            #     print("Total cols != 7")
                 # # PEACE
                 # peaceL = [
                 #     0b00000,
