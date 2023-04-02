@@ -50,16 +50,20 @@ lcd_rows = 2
 lcd = LCD.Adafruit_CharLCD(lcd_rs, lcd_en, lcd_d4, lcd_d5, lcd_d6, lcd_d7,
                            lcd_columns, lcd_rows, lcd_backlight)
 
-lcd.clear()
-lcd.message("Please")
-
-# curr = 0
-# pwm.start(curr)
-
-# while curr <= 100:
-#     pwm.ChangeDutyCycle(curr)
-#     curr += 5
-#     time.sleep(.5)
-    # lcd.clear()
-    # lcd.message("Message sent to Client")
-    # print("Message sent to Client")
+# Filled square
+fill = (
+    0b11111,
+    0b11111,
+    0b11111,
+    0b11111,
+    0b11111,
+    0b11111,
+    0b11111,
+    0b11111,
+)
+# Load custom characters into LCD memory
+lcd.create_char(0, fill)
+# Display custom characters using message()
+lcd.message('\n')
+lcd.set_cursor(0, 0)
+lcd.message('\x00')
