@@ -1,3 +1,4 @@
+import spidev
 import RPi.GPIO as GPIO
 from enum import Enum
 import Adafruit_CharLCD as LCD
