@@ -42,7 +42,7 @@ GPIO.setup(lcd_backlight, GPIO.OUT)
 GPIO.output(lcd_backlight, GPIO.HIGH)
 
 # GPIO.setup(12, GPIO.OUT)
-pwm = GPIO.PWM(12, 100)
+pwm = GPIO.PWM(lcd_backlight, 100)
 
 lcd_columns = 16
 lcd_rows = 2
@@ -56,6 +56,7 @@ pwm.start(curr)
 while curr <= 100:
     pwm.ChangeDutyCycle(curr)
     curr += 5
+    time.sleep(.5)
     # lcd.clear()
     # lcd.message("Message sent to Client")
     # print("Message sent to Client")
