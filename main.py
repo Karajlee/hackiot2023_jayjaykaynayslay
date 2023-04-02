@@ -169,7 +169,6 @@ def write_to_client(socket):
 
     ## Read in inputs from sensors
     while True:
-        print(state)
         # BUTTON
         # if GPIO.input(26) == GPIO.HIGH:
             # print("Button was pushed!")
@@ -224,6 +223,7 @@ def write_to_client(socket):
         elif state == State.SEND_PRESSURE:
             # msg = b'P 001'
             msg_str = "P "+value_str
+            print(msg_str)
 
             socket.sendall(msg_str.encode())
             # state = State.OFF
