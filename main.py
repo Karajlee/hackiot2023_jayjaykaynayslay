@@ -210,9 +210,7 @@ def read_from_client(socket, address):
             print(total_cols)
             if total_cols != 7:
                 print("Total cols != 7")
-                lcd.set_cursor(0,0)
-                lcd.message("fuck")
-                # # Filled square
+                # Filled square
                 # fill = [
                 #     0b11111,
                 #     0b11111,
@@ -223,19 +221,19 @@ def read_from_client(socket, address):
                 #     0b11111,
                 #     0b11111,
                 # ]
-                # # Empty square
-                # empty = [
-                #     0b00000,
-                #     0b00000,
-                #     0b00000,
-                #     0b00000,
-                #     0b00000,
-                #     0b00000,
-                #     0b00000,
-                #     0b00000,
-                # ]
+                # Empty square
+                empty = [
+                    0b00000,
+                    0b00000,
+                    0b00000,
+                    0b00000,
+                    0b00000,
+                    0b00000,
+                    0b00000,
+                    0b00000,
+                ]
                 # lcd.create_char(0, fill)
-                # lcd.create_char(7, empty)
+                lcd.create_char(7, empty)
 
 
                 # max_col = 2 * total_cols
@@ -270,6 +268,7 @@ def read_from_client(socket, address):
                     # time.sleep(0.15)
 
             else:
+                lcd.clear()
                 print("Total cols = 7")
                 # PEACE
                 peaceL = [
