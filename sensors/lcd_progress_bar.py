@@ -107,4 +107,4 @@ while (col != 0):
     lcd.message('\x00')
 
     col -= 2
-    time.sleep(0.5)
+    time.sleep(1)
