@@ -57,12 +57,12 @@ import digitalio
 import adafruit_character_lcd.character_lcd as characterlcd
 
 # Define LCD pins
-lcd_rs = digitalio.DigitalInOut(board.D26)
-lcd_en = digitalio.DigitalInOut(board.D19)
-lcd_d4 = digitalio.DigitalInOut(board.D13)
-lcd_d5 = digitalio.DigitalInOut(board.D6)
-lcd_d6 = digitalio.DigitalInOut(board.D5)
-lcd_d7 = digitalio.DigitalInOut(board.D11)
+lcd_rs = digitalio.DigitalInOut(board.D25)
+lcd_en = digitalio.DigitalInOut(board.D24)
+lcd_d4 = digitalio.DigitalInOut(board.D23)
+lcd_d5 = digitalio.DigitalInOut(board.D17)
+lcd_d6 = digitalio.DigitalInOut(board.D18)
+lcd_d7 = digitalio.DigitalInOut(board.D22)
 
 # Define LCD column and row size for 16x2 LCD.
 lcd_columns = 16
