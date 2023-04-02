@@ -166,7 +166,7 @@ def read_from_client(socket, address):
         sensor_data = data.decode('ascii').split(" ")
 
         if(sensor_data[0]=="P"):
-            pwm.ChangeDutyCycle(sensor_data[1])
+            pwm.ChangeDutyCycle(int(sensor_data[1]))
 
     # global state
     # state = State.OFF
