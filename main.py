@@ -181,11 +181,11 @@ def init_rpi1():
         client_sock.close()
 
 # ----------------------------- THREADS -----------------------------
-m = threading.Lock()
+# m = threading.Lock()
 def read_from_client(socket, address):
     global pwm
     global lcd
-    global m
+    # global m
 
     print("Preparing to read...")
 
@@ -210,65 +210,75 @@ def read_from_client(socket, address):
         if(sensor_data[0]=="R"):
             total_cols = int(sensor_data[1])
             print(total_cols)
-            m.acquire()
+            # m.acquire()
             if total_cols != 7:
                 print("Total cols != 7")
-                # Filled square
-                fill = [
-                    0b11111,
-                    0b11111,
-                    0b11111,
-                    0b11111,
-                    0b11111,
-                    0b11111,
-                    0b11111,
-                    0b11111,
-                ]
-                # Empty square
-                empty = [
-                    0b00000,
-                    0b00000,
-                    0b00000,
-                    0b00000,
-                    0b00000,
-                    0b00000,
-                    0b00000,
-                    0b00000,
-                ]
-                lcd.create_char(0, fill)
-                lcd.create_char(7, empty)
+
+                blocks_filled = total_cols * 2
+                blocks_empty = 16 - blocks_filled
+
+                block_line = ('X' * blocks_filled) + (' ' * blocks_empty)
+                lcd.set_cursor(0, 0)
+                lcd.message(block_line)
+                lcd.set_cursor(0, 1)
+                lcd.message(block_line)
+
+                # # Filled square
+                # fill = [
+                #     0b11111,
+                #     0b11111,
+                #     0b11111,
+                #     0b11111,
+                #     0b11111,
+                #     0b11111,
+                #     0b11111,
+                #     0b11111,
+                # ]
+                # # Empty square
+                # empty = [
+                #     0b00000,
+                #     0b00000,
+                #     0b00000,
+                #     0b00000,
+                #     0b00000,
+                #     0b00000,
+                #     0b00000,
+                #     0b00000,
+                # ]
+                # lcd.create_char(0, fill)
+                # lcd.create_char(7, empty)
 
 
-                max_col = 2 * total_cols
-                col = 0
-                while (col < max_col):
-                    # Load custom characters into LCD memory
-                    # Display custom characters using message()
-                    lcd.message('\n')
-                    lcd.set_cursor(col, 0)
-                    lcd.message('\x00')
-                    lcd.set_cursor(col+1, 0)
-                    lcd.message('\x00')
-                    lcd.set_cursor(col, 1)
-                    lcd.message('\x00')
-                    lcd.set_cursor(col+1, 1)
-                    lcd.message('\x00')
+                # max_col = 2 * total_cols
+                # col = 0
+                # while (col < max_col):
+                #     # Load custom characters into LCD memory
+                #     # Display custom characters using message()
+                #     lcd.message('\n')
+                #     lcd.set_cursor(col, 0)
+                #     lcd.message('\x00')
+                #     lcd.set_cursor(col+1, 0)
+                #     lcd.message('\x00')
+                #     lcd.set_cursor(col, 1)
+                #     lcd.message('\x00')
+                #     lcd.set_cursor(col+1, 1)
+                #     lcd.message('\x00')
 
-                    col += 2
-                    # time.sleep(0.3)
+                #     col += 2
+                #     # time.sleep(0.3)
 
-                col = max_col
-                while (col < 16):
-                    # Load custom characters into LCD memory
-                    # Display custom characters using message()
-                    lcd.message('\n')
-                    lcd.set_cursor(col, 0)
-                    lcd.message('\x07')
-                    lcd.set_cursor(col, 1)
-                    lcd.message('\x07')
+                # col = max_col
+                # while (col < 16):
+                #     # Load custom characters into LCD memory
+                #     # Display custom characters using message()
+                #     lcd.message('\n')
+                #     lcd.set_cursor(col, 0)
+                #     lcd.message('\x07')
+                #     lcd.set_cursor(col, 1)
+                #     lcd.message('\x07')
 
-                    col += 1
-                    # time.sleep(0.15)
+                #     col += 1
+                #     # time.sleep(0.15)
 
             else:
                 lcd.clear()
@@ -382,7 +392,7 @@ def read_from_client(socket, address):
                 lcd.set_cursor(0, 1)
                 lcd.message('Peace Love Code')
                 print("lcd done print")
-            m.release()
+            # m.release()
 
     # global state
     # state = State.OFF
