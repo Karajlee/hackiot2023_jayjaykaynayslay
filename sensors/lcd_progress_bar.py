@@ -18,7 +18,7 @@ def read_adc(channel):
     adc = ((r[1] & 3) << 8) + r[2]
     return adc
 
-GPIO.setwarnings(False)
+GPIO.setwarnings(False) 
 # GPIO.setmode(GPIO.BOARD) 
 GPIO.setup(26, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 # GPIO.setup(11, GPIO.OUT)  # Backlight
@@ -26,7 +26,6 @@ GPIO.setup(26, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 GPIO.setup(12, GPIO.OUT)  # LED
 GPIO.output(12, GPIO.LOW) # OFF
 # GPIO Pins for LCD and Backlight
-
 GPIO.setup(26, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
 lcd_rs = 25
@@ -67,7 +66,7 @@ lcd_rows = 2
 lcd = LCD.Adafruit_CharLCD(lcd_rs, lcd_en, lcd_d4, lcd_d5, lcd_d6, lcd_d7,
                            lcd_columns, lcd_rows, lcd_backlight)
 
-# Initialize squares
+# Filled square
 fill = (
     0b11111,
     0b11111,
@@ -78,21 +77,9 @@ fill = (
     0b11111,
     0b11111,
 )
-empty = (
-    0b00000,
-    0b00000,
-    0b00000,
-    0b00000,
-    0b00000,
-    0b00000,
-    0b00000,
-    0b00000,
-)
-lcd.create_char(0, fill)
-lcd.create_char(7, empty)
 
-# Fill squares
 col = 0
+lcd.create_char(0, fill)
 while (col != 16):
     # Load custom characters into LCD memory
     # Display custom characters using message()
@@ -109,8 +96,19 @@ while (col != 16):
     col += 2
     time.sleep(0.3)
 
-# Empty squares
+# Empty square
+empty = (
+    0b00000,
+    0b00000,
+    0b00000,
+    0b00000,
+    0b00000,
+    0b00000,
+    0b00000,
+    0b00000,
+)
 col = 14
+lcd.create_char(7, empty)
 while (col >= 0):
     # Load custom characters into LCD memory
     # Display custom characters using message()
@@ -235,27 +233,3 @@ lcd.message('\x06')  # Display smiley character
 # PEACE LOVE CODE
 lcd.set_cursor(0, 1)
 lcd.message('Peace Love Code')
-
-while True:
-    if GPIO.input(26) == GPIO.HIGH:
-        print("Button was pushed!")
-
-        # update state
-        if channel == 0:
-            channel = 1
-        else:
-            channel = 0
-        
-        print("Channel:", channel)
-
-        while(GPIO.input(26)==GPIO.HIGH):
-            time.sleep(15/1000)
-    
-    value = read_adc(channel)  # read from channel 0
-
-    # process value
-    value = min(value, 96)
-    load_bar = int(value * 7 / 96)
-    print(value, ' ', load_bar)
-
-    time.sleep(.5)
