@@ -139,15 +139,16 @@ while True:
 
         while(GPIO.input(26)==GPIO.HIGH):
             time.sleep(15/1000)
+    break
     
-    value = read_adc(channel)  # read from channel 0
-    block_value = int(value * 7 / 96)
-    print(value, ' ', block_value)
+    # value = read_adc(channel)  # read from channel 0
+    # block_value = int(value * 7 / 96)
+    # print(value, ' ', block_value)
 
-    if block_value == 7:
-        break
+    # time.sleep(.5)
 
-    time.sleep(.5)
+    # if block_value == 7:
+    #     break
 
 # PEACE
 peaceL = [
