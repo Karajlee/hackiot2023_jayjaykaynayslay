@@ -215,17 +215,17 @@ def read_from_client(socket, address):
                 blocks_filled = total_cols * 2 / 96 * 7
                 blocks_empty = 16 - int(blocks_filled)
 
-                block_line=""
-                for i in range(int(blocks_filled)):
-                    block_line += 'X'
+                # block_line=""
+                # for i in range(int(blocks_filled)):
+                #     block_line += 'X'
                 
-                for i in range(blocks_empty):
-                    block_line +=' '
+                # for i in range(blocks_empty):
+                #     block_line +=' '
 
                 # block_line = ('X' * blocks_filled) + (' ' * blocks_empty)
                 print(block_line)
                 # lcd.set_cursor(0, 0)
-                lcd.message(block_line)
+                # lcd.message(block_line)
                 # lcd.set_cursor(0, 1)
                 # lcd.message(block_line)
 
@@ -460,8 +460,8 @@ def write_to_client(socket):
         # if (channel == 0):
         #     value=int(value * 7 / 96)
 
-        if (channel == 1):
-            value/=2
+        # if (channel == 1):
+        #     value/=2
 
         value_str = str(value)
         while(len(value_str)<3):
