@@ -53,7 +53,7 @@ spi = spidev.SpiDev()
 spi.open(0, 0)  # open SPI bus 0, device 0
 spi.max_speed_hz = 1000000  # set SPI clock speed
 
-channel = 1
+channel = 0
 
 GPIO.setup(13, GPIO.OUT)
 pwm = GPIO.PWM(13, 100)
@@ -66,7 +66,7 @@ class State(Enum):
     SEND_MSG = 3
     SEND_PRESSURE = 4
 
-state = State.SEND_PRESSURE
+state = State.SEND_MSG
 rpi_num = 0
 
 
@@ -208,7 +208,7 @@ def read_from_client(socket, address):
             pwm.ChangeDutyCycle(int(sensor_data[1]))
         elif(sensor_data[0]=="R"):
             print(sensor_data[1])
-            if (int(sensor_data[1]) != 96):
+            if (int(sensor_data[1]) != 7):
                 lcd_msg = "Sending... " + str(int(int(sensor_data[1]) / 7 * 100)) + "%!"
                 lcd.message(lcd_msg)
             else:
