@@ -128,12 +128,14 @@ def read_from_client(socket, address):
     ## Receive the data from client
     while True:
         data = socket.recv(5)
-        print(data)
         print('received {!r}'.format(data))
         if not data:
             print('no data from', address)
             break
-
+        
+        # Process data
+        sensor_data = data.decode('ascii').split(" ")
+        print(sensor_data)
 
     global state
     state = State.OFF
