@@ -91,8 +91,8 @@ empty = (
     0b00000,
     0b00000,
 )
-col = 0
-while (col != 16):
+col = 14
+while (col != 0):
     # Load custom characters into LCD memory
     lcd.create_char(0, empty)
     # Display custom characters using message()
@@ -106,5 +106,5 @@ while (col != 16):
     lcd.set_cursor(col+1, 1)
     lcd.message('\x00')
 
-    col += 2
-    time.sleep(0.3)
+    col -= 2
+    time.sleep(0.5)
