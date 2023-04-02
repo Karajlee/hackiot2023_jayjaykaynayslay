@@ -212,16 +212,15 @@ def read_from_client(socket, address):
             print(total_cols)
             # m.acquire()
             if total_cols != 7:
-                print("Total cols != 7")
-
                 blocks_filled = total_cols * 2
                 blocks_empty = 16 - blocks_filled
 
                 block_line = ('X' * blocks_filled) + (' ' * blocks_empty)
-                lcd.set_cursor(0, 0)
-                lcd.message(block_line)
-                lcd.set_cursor(0, 1)
-                lcd.message(block_line)
+                print(block_line)
+                # lcd.set_cursor(0, 0)
+                # lcd.message(block_line)
+                # lcd.set_cursor(0, 1)
+                # lcd.message(block_line)
 
                 # # Filled square
                 # fill = [
